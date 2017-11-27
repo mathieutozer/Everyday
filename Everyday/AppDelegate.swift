@@ -7,14 +7,39 @@
 //
 
 import Cocoa
+import PathKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
 
-
+  var windowController: NSWindowController?
+  var selfieEditor: SelfieEdtiorViewController?
   func applicationDidFinishLaunching(_ aNotification: Notification) {
+    
+    
     // Insert code here to initialize your application
+    let selfiesDirectory = Path("~/Desktop/Selfies")
+    let images = selfiesDirectory.glob("*.JPG")
+    for image in images {
+      let url = image.url.standardizedFileURL as CFURL
+      if let imageSource = CGImageSourceCreateWithURL(url, nil) {
+        let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary?
+        let exifDict = imageProperties?[kCGImagePropertyExifDictionary]
+        let dateTimeOriginal = exifDict?[kCGImagePropertyExifDateTimeOriginal]
+        //print(dateTimeOriginal)
+        if let date = NSDate(string: dateTimeOriginal as! String) {
+          let imageMO = NSEntityDescription.insertNewObject(forEntityName: "Image", into: persistentContainer.viewContext) as! Image
+          imageMO.dateTaken = date as Date
+          imageMO.filename = image.url.standardizedFileURL.lastPathComponent
+        }
+      }
+    }
+    
+    selfieEditor = SelfieEdtiorViewController(nibName: NSNib.Name("SelfieEditorViewController"), bundle: nil)
+    windowController = NSWindowController(window: NSWindow(contentViewController: selfieEditor!))
+    windowController?.showWindow(self)
+    
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {

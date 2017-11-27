@@ -7,22 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97CC74C43F2F9103753B02A2 /* Pods_Everyday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD423D263527659880D7385 /* Pods_Everyday.framework */; };
 		B841F6761FCCA19E00B10B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841F6751FCCA19E00B10B70 /* AppDelegate.swift */; };
-		B841F6781FCCA19E00B10B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841F6771FCCA19E00B10B70 /* ViewController.swift */; };
 		B841F67B1FCCA19E00B10B70 /* Everyday.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B841F6791FCCA19E00B10B70 /* Everyday.xcdatamodeld */; };
 		B841F67D1FCCA19E00B10B70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B841F67C1FCCA19E00B10B70 /* Assets.xcassets */; };
 		B841F6801FCCA19E00B10B70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B841F67E1FCCA19E00B10B70 /* Main.storyboard */; };
+		B841F6891FCCA2A900B10B70 /* SelfieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841F6881FCCA2A900B10B70 /* SelfieView.swift */; };
+		B841F68B1FCCA2BB00B10B70 /* SelfieEdtiorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841F68A1FCCA2BB00B10B70 /* SelfieEdtiorViewController.swift */; };
+		B841F68D1FCCB29700B10B70 /* SelfieWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841F68C1FCCB29700B10B70 /* SelfieWindow.swift */; };
+		B841F68F1FCCB2DF00B10B70 /* SelfieWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841F68E1FCCB2DF00B10B70 /* SelfieWindowController.swift */; };
+		B841F6B21FCCB49600B10B70 /* SelfieEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B841F6B01FCCB49600B10B70 /* SelfieEditorViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16CCCC719ECCDDEC916266DD /* Pods-Everyday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everyday.release.xcconfig"; path = "Pods/Target Support Files/Pods-Everyday/Pods-Everyday.release.xcconfig"; sourceTree = "<group>"; };
+		7AD423D263527659880D7385 /* Pods_Everyday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Everyday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B841F6721FCCA19E00B10B70 /* Everyday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everyday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B841F6751FCCA19E00B10B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B841F6771FCCA19E00B10B70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B841F67A1FCCA19E00B10B70 /* Everyday.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Everyday.xcdatamodel; sourceTree = "<group>"; };
 		B841F67C1FCCA19E00B10B70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B841F67F1FCCA19E00B10B70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B841F6811FCCA19E00B10B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B841F6821FCCA19E00B10B70 /* Everyday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Everyday.entitlements; sourceTree = "<group>"; };
+		B841F6881FCCA2A900B10B70 /* SelfieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieView.swift; sourceTree = "<group>"; };
+		B841F68A1FCCA2BB00B10B70 /* SelfieEdtiorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieEdtiorViewController.swift; sourceTree = "<group>"; };
+		B841F68C1FCCB29700B10B70 /* SelfieWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieWindow.swift; sourceTree = "<group>"; };
+		B841F68E1FCCB2DF00B10B70 /* SelfieWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieWindowController.swift; sourceTree = "<group>"; };
+		B841F6B01FCCB49600B10B70 /* SelfieEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieEditorViewController.xib; sourceTree = "<group>"; };
+		CB4BA221CBCCB2AD2FE70231 /* Pods-Everyday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everyday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Everyday/Pods-Everyday.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,17 +42,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97CC74C43F2F9103753B02A2 /* Pods_Everyday.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A3F8EEA88D97069EAC6A5B48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AD423D263527659880D7385 /* Pods_Everyday.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AD8FEB809A2E4B89F4178A83 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB4BA221CBCCB2AD2FE70231 /* Pods-Everyday.debug.xcconfig */,
+				16CCCC719ECCDDEC916266DD /* Pods-Everyday.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B841F6691FCCA19E00B10B70 = {
 			isa = PBXGroup;
 			children = (
 				B841F6741FCCA19E00B10B70 /* Everyday */,
 				B841F6731FCCA19E00B10B70 /* Products */,
+				AD8FEB809A2E4B89F4178A83 /* Pods */,
+				A3F8EEA88D97069EAC6A5B48 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,9 +88,13 @@
 			isa = PBXGroup;
 			children = (
 				B841F6751FCCA19E00B10B70 /* AppDelegate.swift */,
-				B841F6771FCCA19E00B10B70 /* ViewController.swift */,
+				B841F6881FCCA2A900B10B70 /* SelfieView.swift */,
+				B841F68A1FCCA2BB00B10B70 /* SelfieEdtiorViewController.swift */,
+				B841F68C1FCCB29700B10B70 /* SelfieWindow.swift */,
+				B841F68E1FCCB2DF00B10B70 /* SelfieWindowController.swift */,
 				B841F67C1FCCA19E00B10B70 /* Assets.xcassets */,
 				B841F67E1FCCA19E00B10B70 /* Main.storyboard */,
+				B841F6B01FCCB49600B10B70 /* SelfieEditorViewController.xib */,
 				B841F6811FCCA19E00B10B70 /* Info.plist */,
 				B841F6821FCCA19E00B10B70 /* Everyday.entitlements */,
 				B841F6791FCCA19E00B10B70 /* Everyday.xcdatamodeld */,
@@ -73,9 +109,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B841F6851FCCA19E00B10B70 /* Build configuration list for PBXNativeTarget "Everyday" */;
 			buildPhases = (
+				7EBE2C4D6D81C78D0E233E23 /* [CP] Check Pods Manifest.lock */,
 				B841F66E1FCCA19E00B10B70 /* Sources */,
 				B841F66F1FCCA19E00B10B70 /* Frameworks */,
 				B841F6701FCCA19E00B10B70 /* Resources */,
+				23E4774758BB4942EE07C060 /* [CP] Embed Pods Frameworks */,
+				34FE7ABB20244A25BCB33B9B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,6 +164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B841F6B21FCCB49600B10B70 /* SelfieEditorViewController.xib in Resources */,
 				B841F67D1FCCA19E00B10B70 /* Assets.xcassets in Resources */,
 				B841F6801FCCA19E00B10B70 /* Main.storyboard in Resources */,
 			);
@@ -132,14 +172,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		23E4774758BB4942EE07C060 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Everyday/Pods-Everyday-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PathKit/PathKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PathKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Everyday/Pods-Everyday-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		34FE7ABB20244A25BCB33B9B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Everyday/Pods-Everyday-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EBE2C4D6D81C78D0E233E23 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Everyday-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B841F66E1FCCA19E00B10B70 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B841F67B1FCCA19E00B10B70 /* Everyday.xcdatamodeld in Sources */,
-				B841F6781FCCA19E00B10B70 /* ViewController.swift in Sources */,
+				B841F68B1FCCA2BB00B10B70 /* SelfieEdtiorViewController.swift in Sources */,
+				B841F6891FCCA2A900B10B70 /* SelfieView.swift in Sources */,
+				B841F68D1FCCB29700B10B70 /* SelfieWindow.swift in Sources */,
 				B841F6761FCCA19E00B10B70 /* AppDelegate.swift in Sources */,
+				B841F68F1FCCB2DF00B10B70 /* SelfieWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +362,7 @@
 		};
 		B841F6861FCCA19E00B10B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB4BA221CBCCB2AD2FE70231 /* Pods-Everyday.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
@@ -281,6 +379,7 @@
 		};
 		B841F6871FCCA19E00B10B70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16CCCC719ECCDDEC916266DD /* Pods-Everyday.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;

@@ -19,22 +19,46 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     // Insert code here to initialize your application
-    let selfiesDirectory = Path("~/Desktop/Selfies")
-    let images = selfiesDirectory.glob("*.JPG")
-    for image in images {
-      let url = image.url.standardizedFileURL as CFURL
-      if let imageSource = CGImageSourceCreateWithURL(url, nil) {
-        let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary?
-        let exifDict = imageProperties?[kCGImagePropertyExifDictionary]
-        let dateTimeOriginal = exifDict?[kCGImagePropertyExifDateTimeOriginal]
-        //print(dateTimeOriginal)
-        if let date = NSDate(string: dateTimeOriginal as! String) {
-          let imageMO = NSEntityDescription.insertNewObject(forEntityName: "Image", into: persistentContainer.viewContext) as! Image
-          imageMO.dateTaken = date as Date
-          imageMO.filename = image.url.standardizedFileURL.lastPathComponent
+    if false {
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "yyyy:MM:dd HH:mm:ss" /* date_format_you_want_in_string from
+       * http://userguide.icu-project.org/formatparse/datetime
+       */
+      
+      let selfiesDirectory = Path("~/Desktop/Selfies")
+      let images = selfiesDirectory.glob("*.JPG")
+      for image in images {
+        let url = image.url.standardizedFileURL as CFURL
+        if let imageSource = CGImageSourceCreateWithURL(url, nil) {
+          let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary?
+          let exifDict = imageProperties?[kCGImagePropertyExifDictionary]
+          let dateTimeOriginal = exifDict?[kCGImagePropertyExifDateTimeOriginal]
+          //print(dateTimeOriginal)
+          if let date = dateFormatter.date(from: dateTimeOriginal as! String) {
+            let imageMO = NSEntityDescription.insertNewObject(forEntityName: "Image", into: persistentContainer.viewContext) as! Image
+            imageMO.dateTaken = date as Date
+            imageMO.filename = image.url.standardizedFileURL.lastPathComponent
+            persistentContainer.viewContext.insert(imageMO)
+          }
         }
       }
     }
+    
+    do {
+      try persistentContainer.viewContext.save()
+    } catch {
+      fatalError("Failure to save context: \(error)")
+    }
+    
+//    let employeesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Image")
+//
+//    do {
+//      let fetchedImages = try persistentContainer.viewContext.fetch(employeesFetch) as! [Image]
+//      print(fetchedImages)
+//    } catch {
+//      fatalError("Failed to fetch employees: \(error)")
+//    }
+    
     
     selfieEditor = SelfieEdtiorViewController(nibName: NSNib.Name("SelfieEditorViewController"), bundle: nil)
     windowController = NSWindowController(window: NSWindow(contentViewController: selfieEditor!))

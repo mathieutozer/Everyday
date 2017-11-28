@@ -7,13 +7,22 @@
 //
 
 import Cocoa
+import PathKit
 
-class SelfieView: NSView {
-
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
+class SelfieView: NSImageView {
+  var imageModel: Image? {
+    didSet {
+      super.image = imageModel?.img
     }
-    
+  }
+}
+
+extension Image {
+  var img: NSImage {
+    get {
+      let path = Path("~/Desktop/Selfies/\(self.filename ?? "")").absolute().string
+      let image = NSImage(contentsOfFile: path)
+      return image!
+    }
+  }
 }

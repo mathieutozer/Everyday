@@ -25,4 +25,13 @@ extension Image {
       return image!
     }
   }
+  
+  var coreImage: CIImage {
+    get {
+      let image = self.img.tiffRepresentation
+      let bitmap = NSBitmapImageRep(data: image!)
+      let core = CIImage(bitmapImageRep: bitmap!)
+      return core!
+    }
+  }
 }

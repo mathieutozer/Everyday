@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     // Insert code here to initialize your application
-    if false {
+    if true {
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy:MM:dd HH:mm:ss" /* date_format_you_want_in_string from
        * http://userguide.icu-project.org/formatparse/datetime

@@ -10,6 +10,8 @@
             <connections>
                 <outlet property="baseView" destination="jPn-Ro-vZY" id="4yX-3H-YQZ"/>
                 <outlet property="images" destination="ipU-Ax-BwO" id="zVD-Cj-kyf"/>
+                <outlet property="leftEye" destination="vJS-Mp-BW6" id="bBk-yS-3BP"/>
+                <outlet property="rightEye" destination="Dmu-l8-oJR" id="xPv-xW-6ea"/>
                 <outlet property="selfiView" destination="a8c-na-8pP" id="wHl-CB-0j6"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -29,7 +31,17 @@
                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8c-na-8pP">
                                     <rect key="frame" x="0.0" y="0.0" width="806" height="645"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="5jI-9u-wb6"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="5jI-9u-wb6"/>
+                                </imageView>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vJS-Mp-BW6">
+                                    <rect key="frame" x="288" y="257" width="48" height="48"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="RVy-z5-PMg"/>
+                                </imageView>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dmu-l8-oJR">
+                                    <rect key="frame" x="489" y="257" width="48" height="48"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="2hE-0t-2uA"/>
                                 </imageView>
                             </subviews>
                             <constraints>

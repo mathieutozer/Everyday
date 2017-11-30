@@ -227,6 +227,7 @@
         <arrayController mode="entity" entityName="Image" automaticallyPreparesContent="YES" id="ipU-Ax-BwO">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="E5k-Pk-rLE"/>
+                <binding destination="-2" name="selectionIndexes" keyPath="selectionIndexes" id="53M-xz-LAN"/>
             </connections>
         </arrayController>
     </objects>

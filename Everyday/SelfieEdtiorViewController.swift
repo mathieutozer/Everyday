@@ -18,6 +18,12 @@ class SelfieEdtiorViewController: NSViewController {
   @IBOutlet weak var rightEye: NSImageView!
   @IBOutlet weak var baseView: NSView!
   
+  @objc dynamic var selectionIndexes: NSIndexSet? {
+    didSet {
+      selectedIndex = selectionIndexes?.firstIndex ?? 0
+    }
+  }
+  
   @objc dynamic var managedObjectContext: NSManagedObjectContext {
     get {
       return (NSApp.delegate as! AppDelegate).persistentContainer.viewContext
@@ -53,13 +59,7 @@ class SelfieEdtiorViewController: NSViewController {
           
           selfiView.image = i.img
           
-          //position the selfieView so that it is under the eye view position
-          
-          //let rightEyeOrigin = rightEye.frame.origin
-          
           // how much do we have to translate by
-
-          
           let leftEyeInSelfieView = CGPoint(x: selfiView.frame.width * xi, y: selfiView.frame.height * xj)
           print(leftEyeInSelfieView) /// <<< CORRECT
           
@@ -91,6 +91,9 @@ class SelfieEdtiorViewController: NSViewController {
     super.viewDidLoad()
     let pan = NSPanGestureRecognizer(target: self, action: #selector(SelfieEdtiorViewController.drag(pan:)))
     self.baseView.gestureRecognizers = [pan]
+    
+    images.sortDescriptors = [NSSortDescriptor(key: "dateTaken", ascending: true)]
+    
   }
   
   @objc func drag(pan: NSPanGestureRecognizer) {

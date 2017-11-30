@@ -15,26 +15,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   var windowController: NSWindowController?
   var selfieEditor: SelfieEdtiorViewController?
-  func applicationDidFinishLaunching(_ aNotification: Notification) {
+  
+  var dates = [String]()
+  
+  func doImages(_ images: [Path]) {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy:MM:dd HH:mm:ss"
     
-    
-    // Insert code here to initialize your application
-    if false {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "yyyy:MM:dd HH:mm:ss" /* date_format_you_want_in_string from
-       * http://userguide.icu-project.org/formatparse/datetime
-       */
-      
-      let selfiesDirectory = Path("~/Desktop/Selfies")
-      let images = selfiesDirectory.glob("*.JPG")
-      for image in images {
-        let url = image.url.standardizedFileURL as CFURL
-        if let imageSource = CGImageSourceCreateWithURL(url, nil) {
-          let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary?
-          let exifDict = imageProperties?[kCGImagePropertyExifDictionary]
-          let dateTimeOriginal = exifDict?[kCGImagePropertyExifDateTimeOriginal]
-          //print(dateTimeOriginal)
+    for image in images {
+      let url = image.url.standardizedFileURL as CFURL
+      if let imageSource = CGImageSourceCreateWithURL(url, nil) {
+        let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary?
+        let exifDict = imageProperties?[kCGImagePropertyExifDictionary]
+        let dateTimeOriginal = exifDict?[kCGImagePropertyExifDateTimeDigitized]
+        //print(dateTimeOriginal)
+        if !dates.contains(dateTimeOriginal as! String) {
           if let date = dateFormatter.date(from: dateTimeOriginal as! String) {
+            dates.append(dateTimeOriginal as! String)
             let imageMO = NSEntityDescription.insertNewObject(forEntityName: "Image", into: persistentContainer.viewContext) as! Image
             imageMO.dateTaken = date as Date
             imageMO.filename = image.url.standardizedFileURL.lastPathComponent
@@ -42,6 +39,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
           }
         }
       }
+    }
+  }
+  func applicationDidFinishLaunching(_ aNotification: Notification) {
+    
+    
+    // Insert code here to initialize your application
+    if false {
+      let selfiesDirectory = Path("~/Desktop/Selfies")
+      let images = selfiesDirectory.glob("*.JPG")
+      doImages(images)
+      doImages(selfiesDirectory.glob("*.jpg"))
     }
     
     do {

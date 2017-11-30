@@ -12,26 +12,22 @@ import PathKit
 class SelfieView: NSImageView {
   var imageModel: Image? {
     didSet {
-      super.image = imageModel?.img
+      super.image = imageModel?.img()
     }
   }
 }
 
 extension Image {
-  var img: NSImage {
-    get {
+  func img() -> NSImage {
       let path = Path("~/Desktop/Selfies/\(self.filename ?? "")").absolute().string
       let image = NSImage(contentsOfFile: path)
       return image!
-    }
   }
   
-  var coreImage: CIImage {
-    get {
-      let image = self.img.tiffRepresentation
+  func coreImage() -> CIImage {
+      let image = self.img().tiffRepresentation
       let bitmap = NSBitmapImageRep(data: image!)
       let core = CIImage(bitmapImageRep: bitmap!)
       return core!
-    }
   }
 }

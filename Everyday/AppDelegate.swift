@@ -50,6 +50,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       let images = selfiesDirectory.glob("*.JPG")
       doImages(images)
       doImages(selfiesDirectory.glob("*.jpg"))
+      
+      let imagesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Image")
+      
+      do {
+        let fetchedImages = try persistentContainer.viewContext.fetch(imagesFetch) as! [Image]
+        var failureCount = 0
+        var count = 0
+        for image in fetchedImages {
+          autoreleasepool {
+            if !image.computeOffset() {
+              failureCount += 1
+              print("Failure \(failureCount)")
+            }
+          }
+          count += 1
+          print(count)
+        }
+      } catch {
+        fatalError("Failed to fetch employees: \(error)")
+      }
     }
     
     do {
@@ -58,14 +78,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       fatalError("Failure to save context: \(error)")
     }
     
-//    let employeesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Image")
-//
-//    do {
-//      let fetchedImages = try persistentContainer.viewContext.fetch(employeesFetch) as! [Image]
-//      print(fetchedImages)
-//    } catch {
-//      fatalError("Failed to fetch employees: \(error)")
-//    }
+    
     
     
     selfieEditor = SelfieEdtiorViewController(nibName: NSNib.Name("SelfieEditorViewController"), bundle: nil)

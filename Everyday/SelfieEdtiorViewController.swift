@@ -34,55 +34,40 @@ class SelfieEdtiorViewController: NSViewController {
     didSet {
       images?.setSelectionIndex(selectedIndex)
       if let i = images.selectedObjects.first as? Image {
-        let context = CIContext()
-        let options = [CIDetectorAccuracy : CIDetectorAccuracyHigh]
-        let detector = CIDetector(ofType: CIDetectorTypeFace, context: context, options: options)
-        let coreImage = i.coreImage
         let nsImage = i.img
-        if let features = detector?.features(in: coreImage).first as? CIFaceFeature {
-          
-          // size the image view to be max size given the images aspect ratio
-          let imageSize = nsImage.size
-          
-          var rx = 0.0 as CGFloat
-          rx = 1.0/(imageSize.height / imageSize.width)
-          let newWidth = self.baseView.frame.size.height * rx
-          var frame = self.view.frame
-          frame.origin.y = 0
-          frame.size.height = self.baseView.frame.size.height
-          frame.size.width = newWidth
-          frame.origin.x = (self.baseView.frame.size.width - newWidth) / 2
-          selfiView.frame = frame
-          //1/(100/(100-25))
-          let xi = 1.0/(imageSize.width / features.leftEyePosition.x)
-          let xj = 1.0/(imageSize.height / (features.leftEyePosition.y))
-          
-          selfiView.image = i.img
-          
-          // how much do we have to translate by
-          let leftEyeInSelfieView = CGPoint(x: selfiView.frame.width * xi, y: selfiView.frame.height * xj)
-          print(leftEyeInSelfieView) /// <<< CORRECT
-          
-          let p = leftEye.frame.origin
-          //let p = self.view.convert(leftEyeOrigin, to: selfiView)
-          print(p)
-          
-          let xOffset = p.x - leftEyeInSelfieView.x
-          let yOffset = p.y - leftEyeInSelfieView.y
-          
-          
-          var offsetFrame = selfiView.frame
-          offsetFrame.origin.x = offsetFrame.origin.x + xOffset
-          offsetFrame.origin.y = offsetFrame.origin.y + yOffset
-          
-         // print(offsetFrame)
-          
-          selfiView.frame = offsetFrame
-          
-
-          //print(CGPoint(x: xOffset, y: yOffset))
-          
-        }
+        // size the image view to be max size given the images aspect ratio
+        let imageSize = nsImage().size
+        
+        var rx = 0.0 as CGFloat
+        rx = 1.0/(imageSize.height / imageSize.width)
+        let newWidth = self.baseView.frame.size.height * rx
+        var frame = self.view.frame
+        frame.origin.y = 0
+        frame.size.height = self.baseView.frame.size.height
+        frame.size.width = newWidth
+        frame.origin.x = (self.baseView.frame.size.width - newWidth) / 2
+        selfiView.frame = frame
+        //1/(100/(100-25))
+        let xi = CGFloat(i.xi)
+        let xj = CGFloat(i.xj)
+        
+        selfiView.image = i.img()
+        
+        // how much do we have to translate by
+        let leftEyeInSelfieView = CGPoint(x: selfiView.frame.width * xi, y: selfiView.frame.height * xj)
+        print(leftEyeInSelfieView) /// <<< CORRECT
+        
+        let p = leftEye.frame.origin
+        print(p)
+        
+        let xOffset = p.x - leftEyeInSelfieView.x
+        let yOffset = p.y - leftEyeInSelfieView.y
+        
+        
+        var offsetFrame = selfiView.frame
+        offsetFrame.origin.x = offsetFrame.origin.x + xOffset
+        offsetFrame.origin.y = offsetFrame.origin.y + yOffset
+        selfiView.frame = offsetFrame
       }
     }
   }
@@ -104,4 +89,25 @@ class SelfieEdtiorViewController: NSViewController {
     
   }
     
+}
+
+extension Image {
+  func computeOffset() -> Bool {
+    let context = CIContext()
+    let options = [CIDetectorAccuracy : CIDetectorAccuracyHigh]
+    let detector = CIDetector(ofType: CIDetectorTypeFace, context: context, options: options)
+    let coreImage = self.coreImage
+    let nsImage = self.img
+    
+    if let features = detector?.features(in: coreImage()).first as? CIFaceFeature {  
+      // size the image view to be max size given the images aspect ratio
+      let imageSize = nsImage().size
+      
+      //1/(100/(100-25))
+      self.xi = Float(1.0/(imageSize.width / features.leftEyePosition.x))
+      self.xj = Float(1.0/(imageSize.height / (features.leftEyePosition.y)))
+      return true
+    }
+    return false
+  }
 }

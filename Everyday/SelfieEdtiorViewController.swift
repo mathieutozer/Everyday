@@ -39,12 +39,7 @@ class SelfieEdtiorViewController: NSViewController {
           let imageSize = nsImage.size
           
           var rx = 0.0 as CGFloat
-          //if imageSize.width < self.baseView.frame.size.width {
-            rx = 1.0/(imageSize.height / imageSize.width)
-          //} else {
-//            rx = 1.0/(imageSize.width / self.baseView.frame.size.width)
-          //}
-          print("ratio: \(rx)")
+          rx = 1.0/(imageSize.height / imageSize.width)
           let newWidth = self.baseView.frame.size.height * rx
           var frame = self.view.frame
           frame.origin.y = 0
@@ -52,30 +47,41 @@ class SelfieEdtiorViewController: NSViewController {
           frame.size.width = newWidth
           frame.origin.x = (self.baseView.frame.size.width - newWidth) / 2
           selfiView.frame = frame
-          print(frame)
           //1/(100/(100-25))
           let xi = 1.0/(imageSize.width / features.leftEyePosition.x)
-          let xj = 1.0/(imageSize.height / features.leftEyePosition.y)
-          //print(xi, xj)
-          
+          let xj = 1.0/(imageSize.height / (features.leftEyePosition.y))
           
           selfiView.image = i.img
           
-          //position the image so that it is under the eye positions
+          //position the selfieView so that it is under the eye view position
           
-          let leftEyeOrigin = leftEye.frame.origin
           //let rightEyeOrigin = rightEye.frame.origin
           
           // how much do we have to translate by
-          let p = self.selfiView.convert(leftEyeOrigin, from: leftEye)
+
           
-          let leftEyeInSelfieView = CGPoint(x: selfiView.frame.width * xi, y: selfiView.frame.height * xi)
+          let leftEyeInSelfieView = CGPoint(x: selfiView.frame.width * xi, y: selfiView.frame.height * xj)
+          print(leftEyeInSelfieView) /// <<< CORRECT
+          
+          let p = leftEye.frame.origin
+          //let p = self.view.convert(leftEyeOrigin, to: selfiView)
+          print(p)
           
           let xOffset = p.x - leftEyeInSelfieView.x
           let yOffset = p.y - leftEyeInSelfieView.y
+          
+          
+          var offsetFrame = selfiView.frame
+          offsetFrame.origin.x = offsetFrame.origin.x + xOffset
+          offsetFrame.origin.y = offsetFrame.origin.y + yOffset
+          
+         // print(offsetFrame)
+          
+          selfiView.frame = offsetFrame
+          
+
           //print(CGPoint(x: xOffset, y: yOffset))
           
-          let selfiViewFrame = selfiView.frame
         }
       }
     }

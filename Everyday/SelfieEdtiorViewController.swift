@@ -15,8 +15,12 @@ class SelfieEdtiorViewController: NSViewController {
   @IBOutlet weak var selfiView: NSImageView!
   
   @IBOutlet weak var leftEye: NSImageView!
-  @IBOutlet weak var rightEye: NSImageView!
   @IBOutlet weak var baseView: NSView!
+  @IBOutlet weak var dateLabel: NSView!
+  
+  var playing: Bool = false
+  
+  var timer: Timer?
   
   @objc dynamic var selectionIndexes: NSIndexSet? {
     didSet {
@@ -30,44 +34,57 @@ class SelfieEdtiorViewController: NSViewController {
     }
   }
   
+  func layoutImage(_ image: NSImage, xi: Float, xj: Float) {
+
+    // size the image view to be max size given the images aspect ratio
+    let imageSize = image.size
+    
+    var rx = 0.0 as CGFloat
+    rx = 1.0/(imageSize.height / imageSize.width)
+    let newWidth = self.baseView.frame.size.height * rx
+    var frame = self.view.frame
+    frame.origin.y = 0
+    frame.size.height = self.baseView.frame.size.height
+    frame.size.width = newWidth
+    frame.origin.x = (self.baseView.frame.size.width - newWidth) / 2
+    selfiView.frame = frame
+    
+    var labelFrame = dateLabel.frame
+    labelFrame.origin = frame.origin
+    labelFrame.size.width = frame.width
+    dateLabel.frame = labelFrame
+    
+    if !playing {
+      return
+    }
+    selfiView.image = image
+    
+    if xj != 0 {
+      //1/(100/(100-25))
+      let xi = CGFloat(xi)
+      let xj = CGFloat(xj)
+      
+      
+      // how much do we have to translate by
+      let leftEyeInSelfieView = CGPoint(x: selfiView.frame.width * xi, y: selfiView.frame.height * xj)
+      
+      let p = leftEye.frame.origin
+      
+      let xOffset = p.x - leftEyeInSelfieView.x
+      let yOffset = p.y - leftEyeInSelfieView.y
+      
+      var offsetFrame = selfiView.frame
+      offsetFrame.origin.x = offsetFrame.origin.x + xOffset
+      offsetFrame.origin.y = offsetFrame.origin.y + yOffset
+      selfiView.frame = offsetFrame
+    }
+  }
+  
   @objc dynamic var selectedIndex: Int = 0 {
     didSet {
       images?.setSelectionIndex(selectedIndex)
       if let i = images.selectedObjects.first as? Image {
-        let nsImage = i.img
-        // size the image view to be max size given the images aspect ratio
-        let imageSize = nsImage().size
-        
-        var rx = 0.0 as CGFloat
-        rx = 1.0/(imageSize.height / imageSize.width)
-        let newWidth = self.baseView.frame.size.height * rx
-        var frame = self.view.frame
-        frame.origin.y = 0
-        frame.size.height = self.baseView.frame.size.height
-        frame.size.width = newWidth
-        frame.origin.x = (self.baseView.frame.size.width - newWidth) / 2
-        selfiView.frame = frame
-        //1/(100/(100-25))
-        let xi = CGFloat(i.xi)
-        let xj = CGFloat(i.xj)
-        
-        selfiView.image = i.img()
-        
-        // how much do we have to translate by
-        let leftEyeInSelfieView = CGPoint(x: selfiView.frame.width * xi, y: selfiView.frame.height * xj)
-        print(leftEyeInSelfieView) /// <<< CORRECT
-        
-        let p = leftEye.frame.origin
-        print(p)
-        
-        let xOffset = p.x - leftEyeInSelfieView.x
-        let yOffset = p.y - leftEyeInSelfieView.y
-        
-        
-        var offsetFrame = selfiView.frame
-        offsetFrame.origin.x = offsetFrame.origin.x + xOffset
-        offsetFrame.origin.y = offsetFrame.origin.y + yOffset
-        selfiView.frame = offsetFrame
+        layoutImage(i.img(), xi: i.xi, xj: i.xj)
       }
     }
   }
@@ -79,10 +96,27 @@ class SelfieEdtiorViewController: NSViewController {
     
     images.sortDescriptors = [NSSortDescriptor(key: "dateTaken", ascending: true)]
     
+    let image = #imageLiteral(resourceName: "badge1")
+    self.layoutImage(image, xi: 0, xj: 0)
+  }
+  
+  
+  @IBAction func play(_ sender: Any?) {
+    playing = true
+    timer = Timer.scheduledTimer(withTimeInterval: 0.08, repeats: true, block: { (timer) in
+      if self.selectedIndex <= (self.images.arrangedObjects as! [Any]).count - 1 {
+        self.selectedIndex += 1
+      } else {
+        self.timer?.invalidate()
+        let image = #imageLiteral(resourceName: "badge2")
+        self.layoutImage(image, xi: 0, xj: 0)
+      }
+      
+    })
   }
   
   @objc func drag(pan: NSPanGestureRecognizer) {
-    print(pan.location(in: self.view))
+    layoutImage(selfiView.image!, xi: 0, xj: 0)
   }
   
   override func mouseDown(with event: NSEvent) {
@@ -103,7 +137,6 @@ extension Image {
       // size the image view to be max size given the images aspect ratio
       let imageSize = nsImage().size
       
-      //1/(100/(100-25))
       self.xi = Float(1.0/(imageSize.width / features.leftEyePosition.x))
       self.xj = Float(1.0/(imageSize.height / (features.leftEyePosition.y)))
       return true

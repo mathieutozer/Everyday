@@ -13,10 +13,10 @@ class SelfieEdtiorViewController: NSViewController {
   
   @IBOutlet var images: NSArrayController!
   @IBOutlet weak var selfiView: NSImageView!
-  
-  @IBOutlet weak var leftEye: NSImageView!
   @IBOutlet weak var baseView: NSView!
   @IBOutlet weak var dateLabel: NSView!
+  @IBOutlet weak var xLabel: NSTextField!
+  @IBOutlet weak var yLabel: NSTextField!
   
   var playing: Bool = false
   
@@ -50,6 +50,7 @@ class SelfieEdtiorViewController: NSViewController {
     selfiView.frame = frame
     
     var labelFrame = dateLabel.frame
+    frame.origin.y = frame.origin.y + 20
     labelFrame.origin = frame.origin
     labelFrame.size.width = frame.width
     dateLabel.frame = labelFrame
@@ -63,12 +64,10 @@ class SelfieEdtiorViewController: NSViewController {
       //1/(100/(100-25))
       let xi = CGFloat(xi)
       let xj = CGFloat(xj)
-      
-      
       // how much do we have to translate by
       let leftEyeInSelfieView = CGPoint(x: selfiView.frame.width * xi, y: selfiView.frame.height * xj)
       
-      let p = leftEye.frame.origin
+      let p = CGPoint(x: CGFloat(xLabel.floatValue), y: CGFloat(yLabel.floatValue))
       
       let xOffset = p.x - leftEyeInSelfieView.x
       let yOffset = p.y - leftEyeInSelfieView.y

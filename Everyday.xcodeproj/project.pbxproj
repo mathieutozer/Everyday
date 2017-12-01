@@ -14,8 +14,6 @@
 		B841F6801FCCA19E00B10B70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B841F67E1FCCA19E00B10B70 /* Main.storyboard */; };
 		B841F6891FCCA2A900B10B70 /* SelfieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841F6881FCCA2A900B10B70 /* SelfieView.swift */; };
 		B841F68B1FCCA2BB00B10B70 /* SelfieEdtiorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841F68A1FCCA2BB00B10B70 /* SelfieEdtiorViewController.swift */; };
-		B841F68D1FCCB29700B10B70 /* SelfieWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841F68C1FCCB29700B10B70 /* SelfieWindow.swift */; };
-		B841F68F1FCCB2DF00B10B70 /* SelfieWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841F68E1FCCB2DF00B10B70 /* SelfieWindowController.swift */; };
 		B841F6B21FCCB49600B10B70 /* SelfieEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B841F6B01FCCB49600B10B70 /* SelfieEditorViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -31,8 +29,6 @@
 		B841F6821FCCA19E00B10B70 /* Everyday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Everyday.entitlements; sourceTree = "<group>"; };
 		B841F6881FCCA2A900B10B70 /* SelfieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieView.swift; sourceTree = "<group>"; };
 		B841F68A1FCCA2BB00B10B70 /* SelfieEdtiorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieEdtiorViewController.swift; sourceTree = "<group>"; };
-		B841F68C1FCCB29700B10B70 /* SelfieWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieWindow.swift; sourceTree = "<group>"; };
-		B841F68E1FCCB2DF00B10B70 /* SelfieWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieWindowController.swift; sourceTree = "<group>"; };
 		B841F6B01FCCB49600B10B70 /* SelfieEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieEditorViewController.xib; sourceTree = "<group>"; };
 		CB4BA221CBCCB2AD2FE70231 /* Pods-Everyday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everyday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Everyday/Pods-Everyday.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,8 +86,6 @@
 				B841F6751FCCA19E00B10B70 /* AppDelegate.swift */,
 				B841F6881FCCA2A900B10B70 /* SelfieView.swift */,
 				B841F68A1FCCA2BB00B10B70 /* SelfieEdtiorViewController.swift */,
-				B841F68C1FCCB29700B10B70 /* SelfieWindow.swift */,
-				B841F68E1FCCB2DF00B10B70 /* SelfieWindowController.swift */,
 				B841F67C1FCCA19E00B10B70 /* Assets.xcassets */,
 				B841F67E1FCCA19E00B10B70 /* Main.storyboard */,
 				B841F6B01FCCB49600B10B70 /* SelfieEditorViewController.xib */,
@@ -234,9 +228,7 @@
 				B841F67B1FCCA19E00B10B70 /* Everyday.xcdatamodeld in Sources */,
 				B841F68B1FCCA2BB00B10B70 /* SelfieEdtiorViewController.swift in Sources */,
 				B841F6891FCCA2A900B10B70 /* SelfieView.swift in Sources */,
-				B841F68D1FCCB29700B10B70 /* SelfieWindow.swift in Sources */,
 				B841F6761FCCA19E00B10B70 /* AppDelegate.swift in Sources */,
-				B841F68F1FCCB2DF00B10B70 /* SelfieWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,9 +11,10 @@
                 <outlet property="baseView" destination="jPn-Ro-vZY" id="4yX-3H-YQZ"/>
                 <outlet property="dateLabel" destination="OhX-Sf-FHr" id="rht-n2-3Nr"/>
                 <outlet property="images" destination="ipU-Ax-BwO" id="zVD-Cj-kyf"/>
-                <outlet property="leftEye" destination="vJS-Mp-BW6" id="bBk-yS-3BP"/>
                 <outlet property="selfiView" destination="a8c-na-8pP" id="wHl-CB-0j6"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="xLabel" destination="Rpd-pW-gy0" id="63N-Uk-QR2"/>
+                <outlet property="yLabel" destination="I2b-zX-mkj" id="0Ua-IV-dGb"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -175,14 +176,34 @@
                                                 <binding destination="ipU-Ax-BwO" name="value" keyPath="arrangedObjects.@count" id="2tZ-Lh-WOo"/>
                                             </connections>
                                         </textField>
+                                        <textField verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2b-zX-mkj">
+                                            <rect key="frame" x="12" y="3" width="34" height="22"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="500" drawsBackground="YES" id="NGb-PJ-tnZ">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rpd-pW-gy0">
+                                            <rect key="frame" x="12" y="26" width="34" height="22"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="350" drawsBackground="YES" id="S5e-ZI-dOa">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="I2b-zX-mkj" secondAttribute="bottom" constant="3" id="1VW-MX-Wgq"/>
                                         <constraint firstItem="2HM-X5-Ysc" firstAttribute="top" secondItem="4ld-qa-lt2" secondAttribute="top" id="B5p-GH-OwB"/>
                                         <constraint firstItem="2HM-X5-Ysc" firstAttribute="leading" secondItem="4ld-qa-lt2" secondAttribute="leading" id="IVN-KA-ZHJ"/>
                                         <constraint firstAttribute="trailing" secondItem="2HM-X5-Ysc" secondAttribute="trailing" id="KlQ-BC-Exy"/>
                                         <constraint firstAttribute="bottom" secondItem="2HM-X5-Ysc" secondAttribute="bottom" constant="49" id="NWK-Xd-hfK"/>
                                         <constraint firstItem="Qrx-5f-6Qq" firstAttribute="leading" secondItem="4ld-qa-lt2" secondAttribute="leading" constant="54" id="QKa-Kd-hmU"/>
                                         <constraint firstAttribute="bottom" secondItem="Qrx-5f-6Qq" secondAttribute="bottom" constant="14" id="SoQ-rd-VjD"/>
+                                        <constraint firstAttribute="bottom" secondItem="Rpd-pW-gy0" secondAttribute="bottom" constant="26" id="dgq-hQ-c9k"/>
+                                        <constraint firstItem="I2b-zX-mkj" firstAttribute="leading" secondItem="4ld-qa-lt2" secondAttribute="leading" constant="12" id="i1X-mt-Tm8"/>
+                                        <constraint firstItem="Rpd-pW-gy0" firstAttribute="leading" secondItem="4ld-qa-lt2" secondAttribute="leading" constant="12" id="icC-IK-6h8"/>
                                     </constraints>
                                 </customView>
                                 <customView id="wLn-8R-BwX">
@@ -210,19 +231,7 @@
                                                         <binding destination="ipU-Ax-BwO" name="value" keyPath="selection.dateTaken" id="gEm-KR-pew"/>
                                                     </connections>
                                                 </textField>
-                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vJS-Mp-BW6">
-                                                    <rect key="frame" x="231" y="282" width="48" height="48"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="42" id="M2B-nd-JcK"/>
-                                                        <constraint firstAttribute="width" constant="42" id="Svw-bb-zDC"/>
-                                                    </constraints>
-                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="RVy-z5-PMg"/>
-                                                </imageView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="vJS-Mp-BW6" firstAttribute="leading" secondItem="jPn-Ro-vZY" secondAttribute="leading" constant="234" id="QaU-Jo-w3m"/>
-                                                <constraint firstItem="vJS-Mp-BW6" firstAttribute="top" secondItem="jPn-Ro-vZY" secondAttribute="top" constant="318" id="pOR-lm-J3i"/>
-                                            </constraints>
                                         </customView>
                                     </subviews>
                                     <constraints>

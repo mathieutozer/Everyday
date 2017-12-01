@@ -18,6 +18,8 @@ class SelfieEdtiorViewController: NSViewController {
   @IBOutlet weak var xLabel: NSTextField!
   @IBOutlet weak var yLabel: NSTextField!
   
+  var imageCache = [String: NSImage]()
+  
   var playing: Bool = false
   
   var timer: Timer?
@@ -83,7 +85,9 @@ class SelfieEdtiorViewController: NSViewController {
     didSet {
       images?.setSelectionIndex(selectedIndex)
       if let i = images.selectedObjects.first as? Image {
-        layoutImage(i.img(), xi: i.xi, xj: i.xj)
+        if let cache = imageCache[i.filename!] {
+          layoutImage(cache, xi: i.xi, xj: i.xj)
+        }
       }
     }
   }
@@ -101,8 +105,13 @@ class SelfieEdtiorViewController: NSViewController {
   
   
   @IBAction func play(_ sender: Any?) {
+    let array = images.arrangedObjects as! [Image]
+    for image in array {
+      imageCache[image.filename!] = image.img()
+    }
+    
     playing = true
-    timer = Timer.scheduledTimer(withTimeInterval: 0.08, repeats: true, block: { (timer) in
+    timer = Timer.scheduledTimer(withTimeInterval: 0.06, repeats: true, block: { (timer) in
       if self.selectedIndex <= (self.images.arrangedObjects as! [Any]).count - 1 {
         self.selectedIndex += 1
       } else {
